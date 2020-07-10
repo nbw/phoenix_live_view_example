@@ -21,14 +21,12 @@ defmodule DemoWeb.ThermostatLive do
   end
 
   def mount(_params, _session, socket) do
-    {:ok, date} =  DateTime.now("Etc/UTC")
     if connected?(socket), do: :timer.send_interval(100, self(), :tick)
-    {:ok, assign(socket, val: 72, mode: :cooling, time: date)}
+    {:ok, assign(socket, val: 72, mode: :cooling, time: now())}
   end
 
   def handle_info(:tick, socket) do
-    {:ok, date} =  DateTime.now("Etc/UTC")
-    {:noreply, assign(socket, time: date)}
+    {:noreply, assign(socket, time: now())}
   end
 
   def handle_event("inc", _, socket) do
@@ -46,5 +44,10 @@ defmodule DemoWeb.ThermostatLive do
        :cooling -> :heating
        :heating -> :cooling
      end)}
+  end
+
+  defp now() do
+    {:ok, date} = DateTime.now("Etc/UTC")
+    date
   end
 end
