@@ -16,7 +16,7 @@ defmodule DemoWeb.UserLive.Show do
       <li><b>Phone:</b> <%= @user.phone_number %></li>
     </ul>
     <span><%= link "Edit", to: Routes.live_path(@socket, UserLive.Edit, @user) %></span>
-    <span><%= link "Back", to: Routes.live_path(@socket, UserLive.Index) %></span>
+    <span><%= link "Back", to: Routes.live_path(@socket, DemoWeb.UserLive.PresenceIndex, 1) %></span>
     """
   end
 
@@ -30,7 +30,10 @@ defmodule DemoWeb.UserLive.Show do
   end
 
   defp fetch(%Socket{assigns: %{id: id}} = socket) do
-    assign(socket, user: Accounts.get_user!(id))
+    case Accounts.get_user(id) do
+      nil ->  redirect(socket, to: Routes.live_path(socket, UserLive.PresenceIndex, 1))
+      user -> assign(socket, user: user)
+    end
   end
 
   def handle_info({Accounts, [:user, :updated], _}, socket) do

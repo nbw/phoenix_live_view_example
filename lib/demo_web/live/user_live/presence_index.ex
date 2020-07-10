@@ -30,7 +30,7 @@ defmodule DemoWeb.UserLive.PresenceIndex do
     {:noreply, fetch(socket)}
   end
 
-  def handle_event("delete_user", id, socket) do
+  def handle_event("delete_user", %{"id" => id}, socket) do
     user = Accounts.get_user!(id)
     {:ok, _user} = Accounts.delete_user(user)
 

@@ -32,11 +32,10 @@ defmodule DemoWeb.UserLive.Edit do
   def handle_event("save", %{"user" => user_params}, socket) do
     case Accounts.update_user(socket.assigns.user, user_params) do
       {:ok, user} ->
-        {:stop,
-         socket
-         |> put_flash(:info, "User updated successfully.")
-         |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
-
+          socket = socket
+          |> put_flash(:info, "User updated successfully.")
+          |> redirect(to: Routes.live_path(socket, UserLive.Show, user))
+        {:noreply, socket}
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
     end
