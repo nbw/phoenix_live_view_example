@@ -29,6 +29,7 @@ defmodule DemoWeb.Router do
     live "/thermostat", ThermostatLive
     live "/search", SearchLive
     live "/clock", ClockLive
+    live "/counter", CounterLive
     live "/image", ImageLive
     live "/pacman", PacmanLive
     live "/rainbow", RainbowLive

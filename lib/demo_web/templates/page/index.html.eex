@@ -7,6 +7,7 @@
   <article class="column">
     <h4>LiveView Examples</h4>
     <ul>
+      <li><%= link "Counter", to: Routes.live_path(@conn, DemoWeb.CounterLive) %></li>
       <li><%= link "Thermostat", to: Routes.live_path(@conn, DemoWeb.ThermostatLive) %></li>
       <li><%= link "Snake", to: Routes.live_path(@conn, DemoWeb.SnakeLive) %></li>
       <li><%= link "Search with autocomplete", to: Routes.live_path(@conn, DemoWeb.SearchLive) %></li>
@@ -24,4 +25,3 @@
     </ul>
   </article>
 </section>
-
