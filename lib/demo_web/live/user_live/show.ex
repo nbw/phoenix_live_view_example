@@ -15,8 +15,8 @@ defmodule DemoWeb.UserLive.Show do
       <li><b>Email:</b> <%= @user.email %></li>
       <li><b>Phone:</b> <%= @user.phone_number %></li>
     </ul>
-    <span><%= link "Edit", to: Routes.live_path(@socket, UserLive.Edit, @user) %></span>
-    <span><%= link "Back", to: Routes.live_path(@socket, DemoWeb.UserLive.PresenceIndex, 1) %></span>
+    <span><%= link "Edit", to: Routes.live_path(@socket, UserLive.Edit, @user), class: "btn" %></span>
+    <span><%= link "Back", to: Routes.live_path(@socket, DemoWeb.UserLive.PresenceIndex, 1), class: "btn" %></span>
     """
   end
 

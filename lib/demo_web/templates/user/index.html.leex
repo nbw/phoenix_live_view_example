@@ -20,9 +20,10 @@
       <td><%= user.phone_number %></td>
 
       <td>
-        <%= link "Show", to: Routes.live_path(@socket, UserLive.Show, user) %>
-        <%= link "Edit", to: Routes.live_path(@socket, UserLive.Edit, user) %>
+        <%= link "Show", to: Routes.live_path(@socket, UserLive.Show, user), class: "btn"%>
+        <%= link "Edit", to: Routes.live_path(@socket, UserLive.Edit, user), class: "btn" %>
         <%= link "Delete", to: "#",
+            class: "btn",
             phx_click: "delete_user",
             phx_value_id: user.id %>
       </td>
