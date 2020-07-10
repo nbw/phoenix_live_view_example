@@ -23,7 +23,7 @@ config :demo, DemoWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
-config :whentoslack, DemoWeb.Repo,
+config :demo, Demo.Repo,
   database: "",
   adapter: Ecto.Adapters.Postgres,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "2"),
