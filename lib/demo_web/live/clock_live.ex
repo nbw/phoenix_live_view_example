@@ -25,6 +25,7 @@ defmodule DemoWeb.ClockLive do
   end
 
   defp put_date(socket) do
-    assign(socket, date:  DateTime.now!("Etc/UTC"))
+    {:ok, date} = DateTime.now("Etc/UTC")
+    assign(socket, date: date)
   end
 end
