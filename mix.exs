@@ -48,7 +48,8 @@ defmodule Demo.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:nimble_strftime, ">= 0.0.0"}
+      {:nimble_strftime, ">= 0.0.0"},
+      {:tzdata, "~> 1.0.1"}
     ]
   end
 
