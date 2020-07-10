@@ -23,6 +23,13 @@ config :demo, DemoWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :whentoslack, DemoWeb.Repo,
+  database: "",
+  adapter: Ecto.Adapters.Postgres,
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "2"),
+  ssl: true,
+  url: System.get_env("DATABASE_URL")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
