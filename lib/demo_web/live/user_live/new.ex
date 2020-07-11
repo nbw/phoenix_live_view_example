@@ -25,7 +25,7 @@ defmodule DemoWeb.UserLive.New do
   def handle_event("save", %{"user" => user_params}, socket) do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
-        {:stop,
+        {:noreply,
          socket
          |> put_flash(:info, "user created")
          |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
@@ -33,5 +33,9 @@ defmodule DemoWeb.UserLive.New do
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, changeset: changeset)}
     end
+  end
+
+  def handle_event("blur", _params, socket) do
+    {:noreply, socket}
   end
 end
